@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import ReactDOM from "react-dom/client";
+import InfoPage from "./components/pages/infoPage/InfoPage";
+import Header from "./components/header/Header";
+import {BrowserRouter, Routes, Route } from "react-router-dom";
+import UserInfoPage from "./components/pages/userInfoPage/UserInfoPage";
+import AdminPage from "./components/pages/adminPage/AdminPage";
 
 function App() {
+  const AuthContext = React.createContext();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <BrowserRouter>
+    <Header />
+    <Routes>
+      <Route path="/" Component={InfoPage}/>
+      <Route path="/user" Component={UserInfoPage}/>
+      <Route path="/admin" Component={AdminPage}/>
+    </Routes>
+      {/* <InfoPage /> */}
+      {/* <UserInfoPage/> */}
+      {/* <AdminPage/> */}
+    </BrowserRouter>
+    </>
   );
 }
 
